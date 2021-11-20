@@ -20,7 +20,7 @@ public class BoardServiceTest {
 	private BoardService service;
 
 	private static final Logger log = LoggerFactory.getLogger(BoardServiceTest.class);
-
+	
 	// 게시판 등록 테스트
 //	@Test
 //	public void testEnroll() {
@@ -33,42 +33,17 @@ public class BoardServiceTest {
 //
 //		service.enroll(vo);
 //	}
-
-	// 게시판 목록 테스트
-//	@Test
-//	public void testGetList() {
-//		service.getList().forEach(board -> log.info("" + board));
-//	}
-
-	// 게시판 조회 테스트
-//	@Test
-//	public void testGetPage() {
-//		int bno = 8;
-//		log.info("" + service.getPage(bno));
-//	}
-
-	// 게시판 수정 테스트
-//	@Test
-//	public void testModify() {
-//		BoardVO board = new BoardVO();
-//
-//		board.setBno(9);
-//		board.setTitle("service title modify test!");
-//		board.setContent("service content modify test!");
-//
-//		int result = service.modify(board);
-//
-//		log.info("result : " + result);
-//		
-//		// 수정 후 조회
-//		log.info("" + service.getPage(board.getBno()));
-//	}
 	
-	// 게시판 삭제 테스트
+	// 게시판 목록 테스트
 	@Test
-	public void testDelete() {
-		int result = service.delete(8);
-		// 삭제가 완료되면 result에 1이, 실패하면 0이 반환
-		log.info("result : " + result);
+	public void testGetList() {
+		service.getList().forEach(board -> log.info("" + board));
+	}
+	
+	// 게시판 조회 테스트
+	@Test
+	public void testGetPage() {
+		int bno = 8;
+		log.info("" + service.getPage(bno));
 	}
 }
