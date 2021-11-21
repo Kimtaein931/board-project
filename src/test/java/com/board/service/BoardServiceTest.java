@@ -2,6 +2,8 @@ package com.board.service;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.board.model.BoardVO;
+import com.board.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -65,10 +68,26 @@ public class BoardServiceTest {
 //	}
 	
 	// 게시판 삭제 테스트
+//	@Test
+//	public void testDelete() {
+//		int result = service.delete(8);
+//		// 삭제가 완료되면 result에 1이, 실패하면 0이 반환
+//		log.info("result : " + result);
+//	}
+	
+	// 게시판 목록(페이징) 테스트
 	@Test
-	public void testDelete() {
-		int result = service.delete(8);
-		// 삭제가 완료되면 result에 1이, 실패하면 0이 반환
-		log.info("result : " + result);
+	public void testGetListPaging() {
+		Criteria cri = new Criteria();
+		
+		cri.setPageNum(2);
+		
+		List list = service.getListPaging(cri);
+		
+		// lambda forEach
+		// 배열에서 forEach 함수를 사용하기 위해서는 Stream API를 이용
+		// ex) String[] strArray = { "a", "p", "p", "l", "e" };
+		// Arrays.stream(strArray).forEach(s -> System.out.println(s));
+		list.forEach(board -> log.info("" + board));
 	}
 }

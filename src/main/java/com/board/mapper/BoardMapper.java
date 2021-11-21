@@ -3,6 +3,7 @@ package com.board.mapper;
 import java.util.List;
 
 import com.board.model.BoardVO;
+import com.board.model.Criteria;
 
 public interface BoardMapper {
 
@@ -11,6 +12,9 @@ public interface BoardMapper {
 
 	// 게시판 목록
 	public List<BoardVO> getList();
+	
+	// 게시판 목록(페이징 적용)
+	public List<BoardVO> getListPaging(Criteria cri);
 
 	// 게시판 조회
 	public BoardVO getPage(int bno);

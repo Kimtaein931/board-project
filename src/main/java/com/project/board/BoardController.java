@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.model.BoardVO;
+import com.board.model.Criteria;
 import com.board.service.BoardService;
 
 @Controller
@@ -23,13 +24,23 @@ public class BoardController {
 	private BoardService boardService;
 
 	// 게시판 목록 페이지 이동 GET
+//	@GetMapping("/list")
+//	public void boardListGet(Model model) {
+//
+//		log.info("게시판 목록 페이지 진입");
+//		
+//		model.addAttribute("list", boardService.getList());
+//
+//	}
+	
+	// 게시판 목록 페이지 이동 GET (페이징)
 	@GetMapping("/list")
-	public void boardListGet(Model model) {
-
-		log.info("게시판 목록 페이지 진입");
+	public void boardListGET(Model model, Criteria cri) {
+		// 보고자 하는 페이지의 정보를 얻기 위해 Criteria 클래스를 파라미터로 추가
+		// 기존에 사용하던 getList() 메소드 대신 새로 작성한 getListPaging() 메소드 사용
+		log.info("boardListGET");
 		
-		model.addAttribute("list", boardService.getList());
-
+		model.addAttribute("list", boardService.getListPaging(cri));
 	}
 
 	// 게시판 등록 페이지 이동 GET
