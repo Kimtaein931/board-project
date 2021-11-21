@@ -72,6 +72,7 @@
 		</thead>
 			<c:forEach items="${list }" var="list">
 				<tr>
+					<td><c:out value="${list.bno}"/></td>
 					<td>
 						<a class="move" href='<c:out value="${list.bno }"/>'>
 							<c:out value="${list.title }"/>
@@ -101,6 +102,14 @@ $(document).ready(function(){
 		
 		if(result === "enroll success"){
 			alert("등록이 완료되었습니다.");
+		}
+		
+		if(result === "modify success"){
+			alert("수정이 완료되었습니다.");
+		}
+		
+		if(result === "delete success"){
+			alert("삭제가 완료되었습니다.");
 		}
 		
 	}	
