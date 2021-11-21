@@ -20,8 +20,27 @@
 		select * from kim_board
 	</select>
 	
+	<!-- 게시물 목록(페이징) -->
+	<select id="getListPaging" resultType="com.board.model.BoardVO">
+		select * from (
+			select bno, title, writer, regdate, updatedate
+			from kim_board order by bno desc) as T1
+			<!-- limit ((${pageNum - 1) * ${amount}), ${amount} -->
+		limit #{skip}, #{amount}
+	</select>
+	
 	<!-- 게시판 조회 -->
 	<select id="getPage" resultType="com.board.model.BoardVO">
 		select * from kim_board where bno = ${bno}
 	</select>
+	
+	<!-- 게시판 수정 -->
+	<update id="modify">
+		update kim_board set title = #{title}, content = #{content}, writer = #{writer}, updatedate = now() where bno = #{bno}
+	</update>
+	
+	<!-- 게시판 삭제 -->
+	<delete id="delete">
+		delete from kim_board where bno = #{bno}
+	</delete>
 </mapper>
