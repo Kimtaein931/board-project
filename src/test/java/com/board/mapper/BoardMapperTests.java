@@ -97,15 +97,22 @@ public class BoardMapperTests {
 //	}
 	
 	// 게시판 목록(페이징) 테스트
+//	@Test
+//	public void testGetListPaging() {
+//		
+//		Criteria cri = new Criteria();
+//		
+//		cri.setPageNum(2);
+//		
+//		List list = mapper.getListPaging(cri);
+//		
+//		list.forEach(board -> log.info("" + board));
+//	}
+	
+	// 게시글 전체 수
 	@Test
-	public void testGetListPaging() {
-		
-		Criteria criteria = new Criteria();
-		
-		criteria.setPageNum(2);
-		
-		List list = mapper.getListPaging(criteria);
-		
-		list.forEach(board -> log.info("" + board));
+	public void testGetTotal() {
+		int total = mapper.getTotal();
+		log.info("total : " + total);
 	}
 }

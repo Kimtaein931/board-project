@@ -15,6 +15,9 @@ public interface BoardMapper {
 	
 	// 게시판 목록(페이징 적용)
 	public List<BoardVO> getListPaging(Criteria cri);
+	
+	// 게시글 전체 수
+	public int getTotal();
 
 	// 게시판 조회
 	public BoardVO getPage(int bno);
