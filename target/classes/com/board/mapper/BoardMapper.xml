@@ -29,6 +29,11 @@
 		limit #{skip}, #{amount}
 	</select>
 	
+	<!-- 게시글 전체 수 -->
+	<select id="getTotal" resultType="int">
+		select count(*) from kim_board
+	</select>
+	
 	<!-- 게시판 조회 -->
 	<select id="getPage" resultType="com.board.model.BoardVO">
 		select * from kim_board where bno = ${bno}
