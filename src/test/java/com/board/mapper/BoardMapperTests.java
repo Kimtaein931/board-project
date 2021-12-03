@@ -110,9 +110,9 @@ public class BoardMapperTests {
 //	}
 	
 	// 게시글 전체 수
-	@Test
-	public void testGetTotal() {
-		int total = mapper.getTotal();
-		log.info("total : " + total);
-	}
+//	@Test
+//	public void testGetTotal() {
+//		int total = mapper.getTotal();
+//		log.info("total : " + total);
+//	}
 }

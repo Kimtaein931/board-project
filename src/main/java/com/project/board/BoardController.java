@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.board.model.BoardVO;
 import com.board.model.Criteria;
+import com.board.model.PageMakerDTO;
 import com.board.service.BoardService;
 
 @Controller
@@ -41,6 +42,12 @@ public class BoardController {
 		log.info("boardListGET");
 		
 		model.addAttribute("list", boardService.getListPaging(cri));
+		
+		int total = boardService.getTotal(cri);
+		
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		
+		model.addAttribute("pageMaker", pageMake);
 	}
 
 	// 게시판 등록 페이지 이동 GET
@@ -68,17 +75,22 @@ public class BoardController {
 	
 	// 게시판 조회 GET
 	@GetMapping("/get")
-	public void boardGetPageGET(int bno, Model model) {
+	public void boardGetPageGET(int bno, Model model, Criteria cri) {
 		
 		model.addAttribute("pageInfo", boardService.getPage(bno));
+		
+		// cri 속성명에 속성값으로 화면으로부터 전달받은 Criteria 인스턴스를 저장
+		model.addAttribute("cri", cri);
 		
 	}
 	
 	// 게시판 수정 GET
 	@GetMapping("/modify")
-	public void boardModifyGET(int bno, Model model) {
+	public void boardModifyGET(int bno, Model model, Criteria cri) {
 		
 		model.addAttribute("pageInfo", boardService.getPage(bno));
+		
+		model.addAttribute("cri", cri);
 		
 	}
 	
